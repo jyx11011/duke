@@ -43,7 +43,7 @@ public class Ui {
         case Done:
             return showDoneTask(result.getTasks()[0]);
         default:
-            assert false: "unknown result type";
+            assert false : "unknown result type";
         }
         return "";
     }

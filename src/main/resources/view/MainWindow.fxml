@@ -7,7 +7,7 @@
 <AnchorPane fx:id="mainWindow" prefHeight="600.0" prefWidth="450.0" minHeight="100" minWidth="300" stylesheets="@duke.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="duke.ui.MainWindow">
     <children>
         <TextField fx:id="userInput" maxWidth="Infinity" onAction="#handleUserInput" prefHeight="41.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="65.0" />
-        <Button fx:id="send" prefHeight="41.0" prefWidth="65.0" onAction="#handleUserInput" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" text="Send"/>
+        <Button fx:id="sendButton" prefHeight="41.0" prefWidth="65.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" text="Send"/>
         <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER" hvalue="1.0" vvalue="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="41.0">
             <content>
                 <VBox fx:id="dialogContainer" />

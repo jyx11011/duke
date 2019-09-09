@@ -25,7 +25,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     private VBox dialogContainer;
     @FXML
-    private Button send;
+    private Button sendButton;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/user.jpg"));
     private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/duke.jpg"));
@@ -38,6 +38,9 @@ public class MainWindow extends AnchorPane {
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
         scrollPane.setFitToWidth(true);
+        sendButton.setOnMouseClicked(event -> {
+            handleUserInput();
+        });
     }
 
     /**
@@ -90,7 +93,7 @@ public class MainWindow extends AnchorPane {
      */
     public void exit() {
         userInput.setDisable(true);
-        send.setDisable(true);
+        sendButton.setDisable(true);
         PauseTransition delay = new PauseTransition(Duration.seconds(3));
         delay.setOnFinished(event -> Platform.exit());
         delay.play();

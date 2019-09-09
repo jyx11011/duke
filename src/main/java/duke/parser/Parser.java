@@ -63,13 +63,16 @@ public class Parser {
         case DeleteCommand.COMMAND_WORD:
             if (description.isEmpty()) {
                 throw new IllegalIndexOfTaskException("Please provide a valid index.");
+            }
             return new DeleteCommand(Integer.parseInt(description));
         case ToDoCommand.COMMAND_WORD:
             return new ToDoCommand(description);
         case FindCommand.COMMAND_WORD:
             return new FindCommand(description);
         case DeadlineCommand.COMMAND_WORD:
+            return parseDeadlineTask(description);
         case EventCommand.COMMAND_WORD:
+            return parseEventTask(description);
         default:
             throw new IllegalCommandException(
                     "I'm sorry, but I don't know what that means :-(");
@@ -82,8 +85,8 @@ public class Parser {
             throw new IllegalDescriptionException("The format of deadline description is wrong.");
         }
         assert indexOfTime <= description.length() && indexOfTime + 3 <= description.length() :
-                        "String length: " + description.length() + " seperator index: " + sep;
-        String taskDescription = description.substring(indexOfTime).strip();
+                        "String length: " + description.length() + " seperator index: " + indexOfTime;
+        String taskDescription = description.substring(0, indexOfTime).strip();
         String dateTime = description.substring(indexOfTime + 3).strip();
 
         return new DeadlineCommand(taskDescription, parseDateTime(dateTime));
@@ -95,8 +98,8 @@ public class Parser {
             throw new IllegalDescriptionException("The format of deadline description is wrong.");
         }
         assert indexOfTime <= description.length() && indexOfTime + 3 <= description.length() :
-                        "String length: " + description.length() + " seperator index: " + sep;
-        String taskDescription = description.substring(indexOfTime).strip();
+                        "String length: " + description.length() + " seperator index: " + indexOfTime;
+        String taskDescription = description.substring(0, indexOfTime).strip();
         String dateTime = description.substring(indexOfTime + 3).strip();
 
         return new EventCommand(taskDescription, parseDateTime(dateTime));
